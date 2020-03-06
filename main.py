@@ -1,43 +1,19 @@
 import requests
 import random
 
-URL = "http://api.open-notify.org/astros.json"
-URL = "https://restcountries.eu/rest/v2/alpha/col"
+URL = "https://restcountries.eu/rest/v2/all"
+NEW = "https://restcountries.eu/rest/v2/alpha/col"
+
+#URL = "https://restcountries.eu/rest/v2/alpha/col"
+
+
+qus = requests.get(NEW)
+qus = qus.json()
 
 res = requests.get(URL) # get the data
 res = res.json() # convert data to Python format
 
-print(res)
-
-data = {
-  "message": "success",
-  "number": 3,
-  "people": [
-    {
-      "name": "Andrew Morgan",
-      "craft": "ISS"
-    },
-    {
-      "name": "Oleg Skripochka",
-      "craft": "ISS"
-    },
-    {
-      "name": "Jessica Meir",
-      "craft": "ISS"
-    },
-  ]
-}
-
-print("Who would you be in space?")
+print(res[0]["name"])
+print("press 'enter' to continue")
 input()
-ans = random.randint(0,2)
-print(data["people"][ans]["name"])
-print(" ")
-
-{"name":"Colombia","topLevelDomain":[".co"],"alpha2Code":"CO","alpha3Code":"COL","callingCodes":["57"],"capital":"Bogotá","altSpellings":["CO","Republic of Colombia","República de Colombia"],"region":"Americas","subregion":"South America","population":48759958,"latlng":[4.0,-72.0],"demonym":"Colombian","area":1141748.0,"gini":55.9,"timezones":["UTC-05:00"],"borders":["BRA","ECU","PAN","PER","VEN"],"nativeName":"Colombia","numericCode":"170","currencies":[{"code":"COP","name":"Colombian peso","symbol":"$"}],"languages":[{"iso639_1":"es","iso639_2":"spa","name":"Spanish","nativeName":"Español"}],"translations":{"de":"Kolumbien","es":"Colombia","fr":"Colombie","ja":"コロンビア","it":"Colombia","br":"Colômbia","pt":"Colômbia","nl":"Colombia","hr":"Kolumbija","fa":"کلمبیا"},"flag":"https://restcountries.eu/data/col.svg","regionalBlocs":[{"acronym":"PA","name":"Pacific Alliance","otherAcronyms":[],"otherNames":["Alianza del Pacífico"]},{"acronym":"USAN","name":"Union of South American Nations","otherAcronyms":["UNASUR","UNASUL","UZAN"],"otherNames":["Unión de Naciones Suramericanas","União de Nações Sul-Americanas","Unie van Zuid-Amerikaanse Naties","South American Union"]}],"cioc":"COL"}
-
-
-
-
-print("what counrty will you die in?")
-input()
+print(qus["name"])
